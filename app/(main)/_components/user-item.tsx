@@ -34,7 +34,7 @@ export const UserItem = () => {
         </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent
-        className="w-80 bg-amber-400"
+        className="w-80"
         align="start"
         alignOffset={11}
         forceMount
@@ -57,7 +57,7 @@ export const UserItem = () => {
           </div>
         </div>
         <DropdownMenuSeparator />
-        <DropdownMenuItem asChild className="w-full cursor-pointer text-muted-foreground bg-slate-200">
+        <DropdownMenuItem asChild className="w-full cursor-pointer text-muted-foreground">
           <SignOutButton>
             Log out
           </SignOutButton>

@@ -60,7 +60,8 @@ export const Item = ({
   ) => {
     event.stopPropagation();
     if (!id) return;
-    const promise = archive({ id });
+    const promise = archive({ id })
+      .then(() => router.push("/documents"))
 
     toast.promise(promise, {
       loading: "Moving to trash...",
@@ -86,7 +87,7 @@ export const Item = ({
         if (!expanded) {
           onExpand?.();
         }
-        // router.push(`/documents/${documentId}`);
+        router.push(`/documents/${documentId}`);
       });
 
       toast.promise(promise, {
@@ -106,14 +107,14 @@ export const Item = ({
         paddingLeft: level ? `${(level * 12) + 12}px` : "12px" 
       }}
       className={cn(
-        "group min-h-[27px] text-sm py-1 pr-3 w-full hover:bg-yellow-900/5 flex items-center to-muted-foreground font-medium",
+        "group min-h-[27px] text-sm py-1 pr-3 w-full hover:bg-primary/5 flex items-center to-muted-foreground font-medium",
         active && "bg-primary/5 text-primary"
       )}
     >
       {!!id && (
         <div
           role="button"
-          className="h-full rounded-sm hover:bg-neutral-300 dark:bg-neutral-600 mr-1"
+          className="h-full rounded-sm hover:bg-neutral-300 dark:hover:bg-neutral-600 mr-1"
           onClick={handleExpand}
         >
           <CheveronIcon 
@@ -135,7 +136,7 @@ export const Item = ({
       </span>
       {isSearch && (
         <kbd className="ml-auto pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 text-[10px] font-mono font-medium to-muted-foreground opacity-100">
-          <span className="text-[10px]">CTRL</span>K
+          <span className="text-[10px]">⌘ / CTRL</span>+ K
         </kbd>
       )}
       {!!id && (
